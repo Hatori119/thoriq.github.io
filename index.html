@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio | Muhammad Thoriqull Rizqy &#8212; DKV & 3D Artist</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Press Start 2P (Pixel), Space Grotesk (Clean Sans), Space Mono (Tech/Retro) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            pixel: ['"Press Start 2P"', 'monospace'],
+            sans: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace'],
+          },
+          colors: {
+            retroBlue: '#1D4ED8',
+            retroBlueDark: '#1E3A8A',
+            retroSky: '#93C5FD',
+            woodBase: '#C49464',
+            woodDark: '#8F6238',
+            paperCream: '#FDFBF7',
+            paperGrid: '#E5E7EB',
+            stickyYellow: '#FEF08A',
+            stickyPink: '#FBCFE8',
+            stickyMint: '#BBF7D0',
+          },
+          boxShadow: {
+            pixel: '5px 5px 0px 0px #111827',
+            pixelSm: '3px 3px 0px 0px #111827',
+            pixelLg: '8px 8px 0px 0px #111827',
+            polaroid: '0 10px 20px -5px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.1)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Blueprint / Sky Grid Background */
+    body {
+      background-color: #2563EB;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+        radial-gradient(circle at 15% 20%, rgba(147, 197, 253, 0.45) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(30, 58, 138, 0.5) 0%, transparent 50%);
+      background-size: 32px 32px, 32px 32px, 100% 100%, 100% 100%;
+      font-family: 'Space Grotesk', sans-serif;
+      color: #111827;
+      overflow-x: hidden;
+    }
+    /* Wood Grain Clipboard Texture */
+    .wooden-clipboard {
+      background-color: #C59565;
+      background-image: 
+        repeating-linear-gradient(
+          90deg,
+          rgba(139, 90, 43, 0.08) 0px,
+          rgba(139, 90, 43, 0.08) 2px,
+          transparent 2px,
+          transparent 12px
+        ),
+        linear-gradient(135deg, #D2A373 0%, #B88352 50%, #9E6B3B 100%);
+      border: 4px solid #111827;
+      box-shadow: 12px 12px 0px 0px #111827;
+    }
+    /* Notebook Grid Paper Texture */
+    .grid-paper {
+      background-color: #FAF8F5;
+      background-image: 
+        linear-gradient(to right, #CBD5E1 1px, transparent 1px),
+        linear-gradient(to bottom, #CBD5E1 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    /* Spiral Notebook Holes */
+    .spiral-holes {
+      background-image: radial-gradient(circle, #334155 4px, transparent 5px);
+      background-size: 24px 20px;
+      background-repeat: repeat-x;
+    }
+    /* Torn Paper Bottom Edge Effect */
+    .torn-edge-bottom {
+      position: relative;
+    }
+    .torn-edge-bottom::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(135deg, #FAF8F5 50%, transparent 50%), 
+                  linear-gradient(225deg, #FAF8F5 50%, transparent 50%);
+      background-size: 16px 16px;
+      background-repeat: repeat-x;
+    }
+    /* Masking Tape Effect */
+    .tape-strip {
+      background-color: rgba(254, 243, 199, 0.85);
+      border-left: 1px dashed rgba(180, 83, 9, 0.3);
+      border-right: 1px dashed rgba(180, 83, 9, 0.3);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(2px);
+    }
+    /* Lanyard Swing Animation */
+    @keyframes gentleSwing {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+    .id-badge-swing {
+      transform-origin: top center;
+      animation: gentleSwing 5s ease-in-out infinite;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .id-badge-swing:hover {
+      animation: none;
+      transform: rotate(0deg) scale(1.03) translateY(-4px);
+    }
+    /* Polaroid Hover Lift */
+    .polaroid-card {
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .polaroid-card:hover {
+      transform: translateY(-6px) rotate(0deg) !important;
+      box-shadow: 8px 8px 0px 0px #111827;
+      z-index: 20;
+    }
+    /* Pixel Button Press */
+    .pixel-btn {
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    .pixel-btn:active {
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 0px 0px #111827;
+    }
+    /* Interactive CV Download Box */
+    .cv-download-box {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background-color 0.18s ease;
+      box-shadow: 3px 3px 0px 0px #111827;
+    }
+    .cv-download-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 6px 6px 0px 0px #111827;
+    }
+    .cv-download-box:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px 0px #111827;
+    }
+    .cv-download-box:focus-visible {
+      outline: 3px dashed #FEF08A;
+      outline-offset: 3px;
+    }
+    .cv-download-box .cv-download-icon {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .cv-download-box:hover .cv-download-icon {
+      animation: cvBounce 0.8s ease-in-out infinite;
+    }
+    @keyframes cvBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+    /* Retro shine sweep across the box */
+    .cv-download-box::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      transform: skewX(-18deg);
+      transition: left 0.5s ease;
+      pointer-events: none;
+    }
+    .cv-download-box:hover::after {
+      left: 120%;
+    }
+    /* Confirmation pulse after the click */
+    .cv-download-active {
+      animation: cvPulse 0.65s ease-in-out 2;
+    }
+    @keyframes cvPulse {
+      0%, 100% { box-shadow: 3px 3px 0px 0px #111827; }
+      50% { box-shadow: 0 0 0 7px #FACC15, 3px 3px 0px 0px #111827; }
+    }
+    /* Flippable ID Card */
+    .id-flip-card {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .id-flip-card.is-flipped {
+      transform: rotateY(180deg);
+    }
+    .id-flip-face {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .id-flip-back {
+      position: absolute;
+      inset: 0;
+      transform: rotateY(180deg);
+    }
+    .id-flip-card:focus-visible {
+      outline: 3px dashed #FACC15;
+      outline-offset: 4px;
+      border-radius: 1rem;
+    }
+    /* Availability Status Blinking Dot */
+    @keyframes statusBlink {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.65); }
+      50% { opacity: 0.5; box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+    }
+    .status-blink {
+      animation: statusBlink 1.6s ease-in-out infinite;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1E3A8A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FACC15;
+      border: 2px solid #111827;
+    }
+  </style>
+</head>
+<body class="min-h-screen py-6 px-3 sm:px-6 lg:px-10 selection:bg-yellow-300 selection:text-gray-900">
+  <!-- Retro OS Top Status Bar -->
+  <header class="max-w-6xl mx-auto mb-6">
+    <div class="bg-white border-4 border-gray-900 rounded-xl shadow-pixel px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-1.5">
+          <span class="w-3.5 h-3.5 rounded-full bg-red-500 border-2 border-gray-900 inline-block"></span>
+          <span class="w-3.5 h-3.5 rounded-full bg-yellow-400 border-2 border-gray-900 inline-block"></span>
+          <span class="w-3.5 h-3.5 rounded-full bg-green-500 border-2 border-gray-900 inline-block"></span>
+        </div>
+        <span class="font-pixel text-[10px] sm:text-xs text-gray-900 tracking-tight ml-1">
+          THORIQ_OS.EXE &#8212; PORTOFOLIO_2026
+        </span>
+      </div>
+      <nav class="flex flex-wrap items-center gap-2 sm:gap-4 font-mono text-xs sm:text-sm font-bold">
+        <a href="#tentang" class="px-2.5 py-1 rounded-lg hover:bg-yellow-300 border-2 border-transparent hover:border-gray-900 transition">Profil</a>
+        <a href="#keahlian" class="px-2.5 py-1 rounded-lg hover:bg-sky-200 border-2 border-transparent hover:border-gray-900 transition">Skill & Edu</a>
+        <a href="#karya" class="px-2.5 py-1 rounded-lg hover:bg-green-200 border-2 border-transparent hover:border-gray-900 transition">Galeri Karya</a>
+        <a href="#kontak" class="px-2.5 py-1 rounded-lg bg-blue-600 text-white border-2 border-gray-900 shadow-pixelSm hover:bg-blue-700 transition">Kontak</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Main Wooden Clipboard Workspace -->
+  <main class="max-w-6xl mx-auto wooden-clipboard rounded-3xl p-4 sm:p-8 lg:p-10 relative mt-10">
+    <!-- Top Metallic Clipboard Clip -->
+    <div class="hidden sm:flex justify-center -mt-14 mb-4 pointer-events-none">
+      <div class="w-56 h-12 bg-gradient-to-b from-slate-200 via-slate-300 to-slate-400 border-4 border-gray-900 rounded-t-2xl rounded-b-lg shadow-pixel flex flex-col items-center justify-center relative">
+        <div class="w-10 h-4 rounded-full bg-blue-600 border-2 border-gray-900 -mt-5"></div>
+        <div class="w-40 h-1.5 bg-slate-500 rounded-full mt-1"></div>
+      </div>
+    </div>
+    <!-- Decorative Retro Camera Sticker (Top Right) -->
+    <div class="hidden md:flex items-center gap-2 bg-white border-3 border-gray-900 rounded-2xl px-3.5 py-2 shadow-pixelSm absolute -top-5 right-8 rotate-3 select-none">
+      <svg class="w-7 h-7 text-gray-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <rect x="2" y="6" width="20" height="14" rx="3" fill="#E2E8F0"/>
+        <circle cx="12" cy="13" r="4" fill="#3B82F6"/>
+        <circle cx="12" cy="13" r="1.5" fill="#111827"/>
+        <path d="M7 6L9 3H15L17 6" fill="#94A3B8"/>
+        <circle cx="18" cy="9" r="1" fill="#EF4444"/>
+      </svg>
+      <div class="font-mono text-[11px] leading-tight font-bold">
+        <span class="block text-blue-700">DKV CREATIVE</span>
+        <span class="text-gray-600">SURABAYA, ID</span>
+      </div>
+    </div>
+    <!-- SECTION 1: HERO / ID CARD + ABOUT ME WINDOW -->
+    <section id="tentang" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+      <!-- Left Column: Lanyard ID Card Badge + Torn Contact Note -->
+      <div class="lg:col-span-4 flex flex-col items-center">
+        <!-- Lanyard Strap -->
+        <div class="w-8 h-10 bg-emerald-700 border-x-4 border-t-4 border-gray-900 rounded-t-lg flex items-center justify-center relative z-10">
+        </div>
+        <!-- Metal Clasp -->
+        <div class="w-12 h-4 bg-slate-300 border-3 border-gray-900 rounded-md -mt-1 z-20"></div>
+        <!-- ID Card Badge (klik/tekan untuk membalik) -->
+        <div class="id-badge-swing w-full max-w-[290px] -mt-1 relative" style="perspective: 1200px;">
+          <div id="id-card-flip" class="id-flip-card cursor-pointer" onclick="flipIdCard()" role="button" tabindex="0" aria-label="Balik kartu ID untuk melihat QR Instagram" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipIdCard();}">
+            <!-- FRONT: Foto + Nama -->
+            <div class="id-flip-face bg-white border-4 border-gray-900 rounded-2xl p-4 shadow-pixel">
+              <!-- Card Slot Punch -->
+              <div class="w-14 h-2.5 bg-gray-800 rounded-full mx-auto mb-3"></div>
+              <!-- Photo Frame -->
+              <div class="relative rounded-xl overflow-hidden border-3 border-gray-900 bg-gradient-to-b from-sky-200 to-blue-100 aspect-[4/4] flex items-center justify-center">
+                <img src="Foto-Formal-Thoriq.jpeg" alt="Foto formal Muhammad Thoriqull Rizqy" class="w-full h-full object-cover block" />
+                <span class="absolute bottom-2 right-2 bg-emerald-400 text-gray-900 font-pixel text-[8px] px-2 py-1 rounded-md border-2 border-gray-900">
+                  OPEN TO WORK
+                </span>
+              </div>
+              <div class="mt-3 text-center">
+                <p class="font-pixel text-[10px] text-blue-700">ID: DKV-2026-SBY</p>
+                <h2 class="font-bold text-lg text-gray-900 leading-tight mt-1">M. Thoriqull Rizqy</h2>
+                <p class="font-mono text-xs text-gray-600 mt-0.5">SMK Negeri 10 Surabaya</p>
+              </div>
+              <p class="text-center font-pixel text-[8px] text-gray-400 mt-2.5">&#128260; KLIK UNTUK BALIK</p>
+            </div>
+            <!-- BACK: QR Instagram -->
+            <div class="id-flip-face id-flip-back bg-gray-900 border-4 border-gray-900 rounded-2xl p-4 shadow-pixel flex flex-col items-center justify-center">
+              <p class="font-pixel text-[10px] text-yellow-400 mb-3">&#128241; SCAN ME</p>
+              <div class="bg-white border-4 border-yellow-400 rounded-xl p-2 shadow-pixelSm w-full max-w-[180px] aspect-square flex items-center justify-center">
+                <img src="QR-IG.png" alt="QR Code Instagram Muhammad Thoriqull Rizqy" class="w-full h-full object-contain block" />
+              </div>
+              <p class="font-pixel text-[10px] text-white mt-3 text-center">INSTAGRAM</p>
+              <p class="font-mono text-[9px] text-gray-400 mt-2.5 text-center">&#128260; KLIK UNTUK KEMBALI</p>
+            </div>
+          </div>
+        </div>
+        <!-- Torn Spiral Note for Quick Contact -->
+        <div class="w-full max-w-[290px] bg-paperCream border-x-4 border-t-4 border-gray-900 rounded-t-xl p-4 pt-6 mt-5 shadow-pixelSm torn-edge-bottom -rotate-1 hover:rotate-0 transition">
+          <div class="spiral-holes h-4 -mt-4 mb-2 opacity-70"></div>
+          <h3 class="font-pixel text-[11px] text-purple-700 mb-3 flex items-center gap-2">
+            <span>&#128222;</span> Quick Contact
+          </h3>
+          <ul class="space-y-2.5 font-mono text-xs">
+            <li>
+              <button onclick="copyText('+62 857-3284-4066', 'Nomor WhatsApp')" class="w-full text-left flex items-center justify-between bg-yellow-100 hover:bg-yellow-200 border-2 border-gray-900 rounded-lg px-2.5 py-1.5 transition group">
+                <span class="truncate font-bold text-gray-900">&#128222; +62 857-3284-4066</span>
+                <span class="text-[10px] bg-white px-1.5 py-0.5 rounded border border-gray-900 group-hover:bg-gray-900 group-hover:text-white">Salin</span>
+              </button>
+            </li>
+            <li>
+              <button onclick="copyText('rizqy3492@gmail.com', 'Alamat Email')" class="w-full text-left flex items-center justify-between bg-sky-100 hover:bg-sky-200 border-2 border-gray-900 rounded-lg px-2.5 py-1.5 transition group">
+                <span class="truncate font-bold text-gray-900">&#128231; rizqy3492@gmail.com</span>
+                <span class="text-[10px] bg-white px-1.5 py-0.5 rounded border border-gray-900 group-hover:bg-gray-900 group-hover:text-white">Salin</span>
+              </button>
+            </li>
+            <li class="flex items-start gap-2 text-gray-700 pt-1 px-1">
+              <span>&#128231;</span>
+              <span>Sukolilo, Kota Surabaya, Jawa Timur 60118</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Availability Status Sticker -->
+        <div class="w-full max-w-[290px] bg-emerald-50 border-4 border-gray-900 rounded-xl p-3 mt-4 shadow-pixel rotate-1 hover:rotate-0 transition">
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="status-blink w-3 h-3 rounded-full bg-emerald-500 border-2 border-gray-900 shrink-0"></span>
+              <span class="font-pixel text-[9px] sm:text-[10px] text-emerald-800 leading-tight">
+                AVAILABLE FOR<br />FREELANCE
+              </span>
+            </div>
+            <div class="text-right shrink-0">
+              <span id="wib-clock" class="font-mono text-sm font-bold text-gray-900 block leading-none">--:--:--</span>
+              <span class="font-pixel text-[8px] text-gray-500">WIB</span>
+            </div>
+          </div>
+          <div class="border-t-2 border-dashed border-emerald-300 mt-2.5 pt-2 flex items-center gap-1.5">
+            <span class="font-mono text-[10px] text-gray-600">&#9201; Respons cepat &#8226; 1x24 jam</span>
+          </div>
+        </div>
+        <!-- Soft Skills Sticker -->
+        <div class="w-full max-w-[290px] bg-white/85 border-4 border-gray-900 rounded-xl p-3 mt-4 shadow-pixel -rotate-1 hover:rotate-0 transition">
+          <h3 class="font-pixel text-[10px] text-blue-700 mb-2.5 flex items-center gap-1.5">
+            <span>&#11088;</span> SOFT SKILLS
+          </h3>
+          <ul class="space-y-1.5">
+            <li class="bg-yellow-200 border-2 border-gray-900 rounded-md px-2 py-1.5">
+              <div class="flex items-center gap-2">
+                <span class="font-pixel text-[8px] text-gray-900 shrink-0">&#9654;</span>
+                <span class="font-mono text-[10px] font-bold text-gray-900">Komunikasi</span>
+              </div>
+              <p class="font-mono text-[9px] text-gray-700 mt-1 pl-4 leading-snug">Menyampaikan ide dan masukan secara jelas kepada tim maupun klien.</p>
+            </li>
+            <li class="bg-sky-200 border-2 border-gray-900 rounded-md px-2 py-1.5">
+              <div class="flex items-center gap-2">
+                <span class="font-pixel text-[8px] text-gray-900 shrink-0">&#9654;</span>
+                <span class="font-mono text-[10px] font-bold text-gray-900">Kerja Tim</span>
+              </div>
+              <p class="font-mono text-[9px] text-gray-700 mt-1 pl-4 leading-snug">Ber kolaborasi terbuka dan saling mendukung dalam proses kreatif.</p>
+            </li>
+            <li class="bg-pink-200 border-2 border-gray-900 rounded-md px-2 py-1.5">
+              <div class="flex items-center gap-2">
+                <span class="font-pixel text-[8px] text-gray-900 shrink-0">&#9654;</span>
+                <span class="font-mono text-[10px] font-bold text-gray-900">Kreativitas</span>
+              </div>
+              <p class="font-mono text-[9px] text-gray-700 mt-1 pl-4 leading-snug">Menghasilkan ide segar dan solusi visual yang out-of-the-box.</p>
+            </li>
+            <li class="bg-emerald-200 border-2 border-gray-900 rounded-md px-2 py-1.5">
+              <div class="flex items-center gap-2">
+                <span class="font-pixel text-[8px] text-gray-900 shrink-0">&#9654;</span>
+                <span class="font-mono text-[10px] font-bold text-gray-900">Problem Solving</span>
+              </div>
+              <p class="font-mono text-[9px] text-gray-700 mt-1 pl-4 leading-snug">Menganalisis kendala dan mencari solusi cepat saat proses produksi.</p>
+            </li>
+            <li class="bg-orange-200 border-2 border-gray-900 rounded-md px-2 py-1.5">
+              <div class="flex items-center gap-2">
+                <span class="font-pixel text-[8px] text-gray-900 shrink-0">&#9654;</span>
+                <span class="font-mono text-[10px] font-bold text-gray-900">Manajemen Waktu</span>
+              </div>
+              <p class="font-mono text-[9px] text-gray-700 mt-1 pl-4 leading-snug">Mengatur deadline dan prioritas agar target tetap tercapai tepat waktu.</p>
+            </li>
+            <li class="bg-purple-200 border-2 border-gray-900 rounded-md px-2 py-1.5">
+              <div class="flex items-center gap-2">
+                <span class="font-pixel text-[8px] text-gray-900 shrink-0">&#9654;</span>
+                <span class="font-mono text-[10px] font-bold text-gray-900">Adaptabilitas</span>
+              </div>
+              <p class="font-mono text-[9px] text-gray-700 mt-1 pl-4 leading-snug">Cepat menyesuaikan diri dengan revisi, tools, dan kebutuhan baru.</p>
+            </li>
+            <li class="bg-lime-200 border-2 border-gray-900 rounded-md px-2 py-1.5">
+              <div class="flex items-center gap-2">
+                <span class="font-pixel text-[8px] text-gray-900 shrink-0">&#9654;</span>
+                <span class="font-mono text-[10px] font-bold text-gray-900">Teliti</span>
+              </div>
+              <p class="font-mono text-[9px] text-gray-700 mt-1 pl-4 leading-snug">Perhatian pada detail kecil demi hasil akhir yang rapi dan presisi.</p>
+            </li>
+            <li class="bg-rose-200 border-2 border-gray-900 rounded-md px-2 py-1.5">
+              <div class="flex items-center gap-2">
+                <span class="font-pixel text-[8px] text-gray-900 shrink-0">&#9654;</span>
+                <span class="font-mono text-[10px] font-bold text-gray-900">Etos Kerja</span>
+              </div>
+              <p class="font-mono text-[9px] text-gray-700 mt-1 pl-4 leading-snug">Disiplin, bertanggung jawab, dan konsisten menyelesaikan setiap tugas.</p>
+            </li>
+          </ul>
+          <p class="font-mono text-[9px] text-gray-500 mt-2.5 pt-2 border-t-2 border-dashed border-gray-300">
+            &#128161; Selalu terbuka untuk masukan &amp; kolaborasi baru.
+          </p>
+        </div>
+      </div>
+      <!-- Right Column: Retro OS Browser Window (About Me) -->
+      <div class="lg:col-span-8 flex flex-col gap-6">
+        <!-- Retro Browser Window -->
+        <div class="bg-white border-4 border-gray-900 rounded-2xl shadow-pixel overflow-hidden">
+          <!-- Window Titlebar -->
+          <div class="bg-blue-700 border-b-4 border-gray-900 px-4 py-2.5 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3.5 h-3.5 rounded-full bg-red-400 border-2 border-gray-900"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-yellow-300 border-2 border-gray-900"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-gray-900"></span>
+              <span class="font-pixel text-[10px] sm:text-xs text-white ml-2 tracking-wider">WWW.ABOUT.ME</span>
+            </div>
+            <span class="font-mono text-xs text-blue-100 hidden sm:inline">C:\Users\Thoriqull\Bio.txt</span>
+          </div>
+          <!-- Window Body with Grid Paper -->
+          <div class="grid-paper p-5 sm:p-8 relative">
+            <!-- Floating Crown Accent -->
+            <div class="inline-flex items-center gap-2 bg-yellow-300 border-2 border-gray-900 rounded-full px-3 py-1 font-pixel text-[9px] sm:text-[10px] text-gray-900 shadow-pixelSm mb-4">
+              <span>&#128075;</span> HALO, SAYA
+            </div>
+            <h1 class="font-pixel text-xl sm:text-3xl lg:text-4xl text-blue-700 leading-snug tracking-tight drop-shadow-[2px_2px_0px_#111827]">
+              MUHAMMAD THORIQULL RIZQY
+            </h1>
+            <div class="mt-3 inline-block bg-gray-900 text-yellow-300 font-mono text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-lg">
+              Desain Komunikasi Visual &#8226; Desain Grafis &amp; 3D Artist
+            </div>
+            <!-- Bio Box -->
+            <div class="mt-5 bg-white/95 border-3 border-gray-900 rounded-xl p-4 sm:p-5 shadow-pixelSm">
+              <p class="text-gray-800 text-sm sm:text-base leading-relaxed">
+                Saya memiliki minat dan ketertarikan pada bidang <strong>Desain Komunikasi Visual</strong>, khususnya dalam perancangan <strong>desain grafis</strong> dan <strong>visual tiga dimensi (3D)</strong>. Saya terbiasa mengolah ide menjadi karya visual yang komunikatif, estetis, dan memiliki pesan yang jelas, baik secara mandiri maupun dalam tim.
+              </p>
+            </div>
+            <!-- Likings / Interests Pills -->
+            <div class="mt-5 flex flex-wrap items-center gap-2.5">
+              <span class="font-pixel text-[10px] text-gray-700 mr-1">MINAT UTAMA:</span>
+              <span class="bg-pink-200 border-2 border-gray-900 rounded-lg px-3 py-1 font-mono text-xs font-bold shadow-pixelSm">&#127912; Desain Grafis &amp; UI</span>
+              <span class="bg-amber-200 border-2 border-gray-900 rounded-lg px-3 py-1 font-mono text-xs font-bold shadow-pixelSm">&#128311; 3D Modeling (Blender)</span>
+              <span class="bg-emerald-200 border-2 border-gray-900 rounded-lg px-3 py-1 font-mono text-xs font-bold shadow-pixelSm">&#128396; Seni Lukis &amp; Stilasi</span>
+            </div>
+            <!-- CTA Buttons -->
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#karya" class="pixel-btn bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-pixel text-[10px] sm:text-xs px-5 py-3.5 rounded-xl border-3 border-gray-900 shadow-pixel inline-flex items-center gap-2">
+                <span>&#128193;</span> LIHAT PORTOFOLIO
+              </a>
+              <button onclick="copyText('rizqy3492@gmail.com', 'Email Thoriqull')" class="pixel-btn bg-white hover:bg-gray-100 text-gray-900 font-mono text-xs sm:text-sm font-bold px-5 py-3 rounded-xl border-3 border-gray-900 shadow-pixel inline-flex items-center gap-2">
+                <span>&#128203;</span> Salin Email
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 2: EDUCATION TIMELINE + SKILLS + EXPERIENCE (Scrapbook Cards) -->
+        <div id="keahlian" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Education Card (Retro Timeline) -->
+          <div class="bg-white border-4 border-gray-900 rounded-2xl p-5 shadow-pixel relative">
+            <div class="tape-strip w-24 h-6 mx-auto -mt-8 mb-3 rotate-1"></div>
+            <h2 class="font-pixel text-xs sm:text-sm text-blue-700 border-b-3 border-gray-900 pb-2.5 mb-4 flex items-center gap-2">
+              <span>&#127891;</span> PENDIDIKAN
+            </h2>
+            <div class="relative pl-6 border-l-4 border-blue-600 space-y-6">
+              <!-- SMK -->
+              <div class="relative">
+                <span class="w-4 h-4 rounded-full bg-yellow-400 border-3 border-gray-900 absolute -left-[34px] top-1"></span>
+                <span class="inline-block bg-blue-100 text-blue-800 font-mono text-[11px] font-bold px-2 py-0.5 rounded border border-gray-900">2024 &#8212; Sekarang</span>
+                <h3 class="font-bold text-lg text-gray-900 mt-1">SMK Negeri 10 Surabaya</h3>
+                <p class="text-[13px] text-gray-600 font-mono">Jurusan Desain Komunikasi Visual (DKV)</p>
+                <p class="text-xs text-gray-700 mt-2 leading-relaxed">
+                  Mendalami desain grafis, UI/UX, animasi 2D/3D, dan produksi konten kreatif. Aktif mengikuti proyek sekolah, PKL, serta kompetisi desain untuk mengasah kemampuan praktis.
+                </p>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  <span class="bg-blue-50 border border-gray-900 text-blue-800 font-mono text-[9px] px-1.5 py-0.5 rounded">DKV</span>
+                  <span class="bg-blue-50 border border-gray-900 text-blue-800 font-mono text-[9px] px-1.5 py-0.5 rounded">3D Blender</span>
+                  <span class="bg-blue-50 border border-gray-900 text-blue-800 font-mono text-[9px] px-1.5 py-0.5 rounded">Motion</span>
+                </div>
+              </div>
+              <!-- SMP -->
+              <div class="relative">
+                <span class="w-4 h-4 rounded-full bg-white border-3 border-gray-900 absolute -left-[34px] top-1"></span>
+                <span class="inline-block bg-gray-100 text-gray-700 font-mono text-[11px] font-bold px-2 py-0.5 rounded border border-gray-900">2021 &#8212; 2024</span>
+                <h3 class="font-bold text-lg text-gray-900 mt-1">SMP Negeri 30 Surabaya</h3>
+                <p class="text-[13px] text-gray-600 font-mono">Sekolah Menengah Pertama</p>
+                <p class="text-xs text-gray-700 mt-2 leading-relaxed">
+                  Menyelesaikan pendidikan menengah pertama sambil mengembangkan minat di bidang seni rupa dan desain melalui kegiatan ekstrakurikuler serta tugas kreatif.
+                </p>
+              </div>
+              <!-- SD -->
+              <div class="relative">
+                <span class="w-4 h-4 rounded-full bg-white border-3 border-gray-900 absolute -left-[34px] top-1"></span>
+                <span class="inline-block bg-gray-100 text-gray-700 font-mono text-[11px] font-bold px-2 py-0.5 rounded border border-gray-900">2015 &#8212; 2021</span>
+                <h3 class="font-bold text-lg text-gray-900 mt-1">SD Klakahrejo</h3>
+                <p class="text-[13px] text-gray-600 font-mono">Sekolah Dasar</p>
+                <p class="text-xs text-gray-700 mt-2 leading-relaxed">
+                  Menyelesaikan pendidikan dasar di SD Klakahrejo, Surabaya, dengan bekal literasi, kreativitas, dan kerja sama yang menjadi fondasi perjalanan belajar selanjutnya.
+                </p>
+              </div>
+            </div>
+            <!-- Catatan Fokus Belajar -->
+            <div class="mt-6 bg-blue-50 border-2 border-dashed border-blue-600 rounded-xl p-3">
+              <p class="font-pixel text-[9px] text-blue-800 mb-1.5">&#128218; FOKUS BELAJAR</p>
+              <p class="text-xs text-gray-700 leading-relaxed">
+                Terus mengembangkan kemampuan di bidang Desain Komunikasi Visual, motion graphic, dan pemodelan 3D melalui proyek mandiri maupun pengalaman PKL.
+              </p>
+            </div>
+          </div>
+          <!-- Skills & Tools Card -->
+          <div class="bg-stickyYellow border-4 border-gray-900 rounded-2xl p-5 shadow-pixel relative">
+            <div class="tape-strip w-24 h-6 mx-auto -mt-8 mb-3 -rotate-2"></div>
+            <h2 class="font-pixel text-xs sm:text-sm text-gray-900 border-b-3 border-gray-900 pb-2.5 mb-4 flex items-center gap-2">
+              <span>&#128295;</span> KEMAMPUAN &amp; TOOLS
+            </h2>
+            <!-- Pixel App Icons Row -->
+            <div class="grid grid-cols-3 gap-2.5 mb-4">
+              <!-- Ai Icon -->
+              <div class="bg-[#330000] text-[#FF9A00] border-3 border-gray-900 rounded-xl p-2 text-center shadow-pixelSm hover:-translate-y-1 transition" title="Adobe Illustrator">
+                <span class="font-bold text-lg block leading-none">Ai</span>
+                <span class="font-mono text-[9px] text-amber-200 block mt-1">Illustrator</span>
+              </div>
+              <!-- Blender Icon -->
+              <div class="bg-[#EA7600] text-white border-3 border-gray-900 rounded-xl p-2 text-center shadow-pixelSm hover:-translate-y-1 transition" title="Blender 3D">
+                <img src="Logo-Blender.jpg" alt="Logo Blender" class="h-6 w-auto mx-auto object-contain block" />
+                <span class="font-mono text-[9px] text-white block mt-1">Blender</span>
+              </div>
+              <!-- UI/UX Icon -->
+              <div class="bg-blue-600 text-white border-3 border-gray-900 rounded-xl p-2 text-center shadow-pixelSm hover:-translate-y-1 transition" title="UI & Layout Design">
+                <span class="font-bold text-lg block leading-none">UI</span>
+                <span class="font-mono text-[9px] text-blue-100 block mt-1">Modul/App</span>
+              </div>
+              <!-- Fine Art Icon -->
+              <div class="bg-emerald-700 text-white border-3 border-gray-900 rounded-xl p-2 text-center shadow-pixelSm hover:-translate-y-1 transition" title="Seni Lukis & Arsir">
+                <span class="font-bold text-lg block leading-none">&#9999;</span>
+                <span class="font-mono text-[9px] text-emerald-100 block mt-1">Sketsa</span>
+              </div>
+              <!-- Canva Icon -->
+              <div class="bg-[#00C4CC] text-white border-3 border-gray-900 rounded-xl p-2 text-center shadow-pixelSm hover:-translate-y-1 transition" title="Canva">
+                <img src="Logo-Canva.jpeg" alt="Logo Canva" class="h-6 w-auto mx-auto object-contain block" />
+                <span class="font-mono text-[9px] text-cyan-50 block mt-1">Canva</span>
+              </div>
+              <!-- Adobe After Effects Icon -->
+              <div class="bg-[#00005B] text-[#9999FF] border-3 border-gray-900 rounded-xl p-2 text-center shadow-pixelSm hover:-translate-y-1 transition" title="Adobe After Effects">
+                <span class="font-bold text-lg block leading-none">Ae</span>
+                <span class="font-mono text-[9px] text-indigo-200 block mt-1">After Eff.</span>
+              </div>
+              <!-- Adobe Premiere Pro Icon -->
+              <div class="bg-[#00005B] text-[#EA77FF] border-3 border-gray-900 rounded-xl p-2 text-center shadow-pixelSm hover:-translate-y-1 transition" title="Adobe Premiere Pro">
+                <span class="font-bold text-lg block leading-none">Pr</span>
+                <span class="font-mono text-[9px] text-fuchsia-200 block mt-1">Premiere</span>
+              </div>
+              <!-- CapCut Icon -->
+              <div class="bg-gray-900 text-white border-3 border-gray-900 rounded-xl p-2 text-center shadow-pixelSm hover:-translate-y-1 transition" title="CapCut">
+                <img src="Logo-CapCut.png" alt="Logo CapCut" class="h-6 w-auto mx-auto object-contain block" />
+                <span class="font-mono text-[9px] text-gray-300 block mt-1">CapCut</span>
+              </div>
+              <!-- Figma Icon -->
+              <div class="bg-white text-[#A259FF] border-3 border-gray-900 rounded-xl p-2 text-center shadow-pixelSm hover:-translate-y-1 transition" title="Figma">
+                <img src="Logo-Figma.png" alt="Logo Figma" class="h-6 w-auto mx-auto object-contain block" />
+                <span class="font-mono text-[9px] text-gray-600 block mt-1">Figma</span>
+              </div>
+            </div>
+            <!-- Skill Descriptions -->
+            <ul class="space-y-2 text-xs text-gray-900">
+              <li class="bg-white/90 border-2 border-gray-900 rounded-lg p-2.5">
+                <strong class="text-blue-800 block">Desain Grafis &amp; Adobe Illustrator:</strong>
+                Merancang materi visual yang komunikatif, estetis, dan tata letak dokumen/aplikasi.
+              </li>
+              <li class="bg-white/90 border-2 border-gray-900 rounded-lg p-2.5">
+                <strong class="text-orange-700 block">Desain 3D (Blender):</strong>
+                Permodelan karakter, furnitur, aset properti kuliner, serta pengaturan proporsi &amp; pencahayaan.
+              </li>
+              <li class="bg-white/90 border-2 border-gray-900 rounded-lg p-2.5">
+                <strong class="text-emerald-800 block">Seni Lukis &amp; Sketsa:</strong>
+                Nirmana titik, teknik arsir (hatching, cross-hatching, stippling), stilasi ornamen, dan still life.
+              </li>
+              <li class="bg-white/90 border-2 border-gray-900 rounded-lg p-2.5">
+                <strong class="text-cyan-700 block">Editing Video &amp; Motion Graphic:</strong>
+                Adobe After Effects, Adobe Premiere Pro, dan CapCut untuk motion, transisi, color grading, serta penyuntingan konten video.
+              </li>
+              <li class="bg-white/90 border-2 border-gray-900 rounded-lg p-2.5">
+                <strong class="text-fuchsia-700 block">Desain Template &amp; Kolaborasi Tim:</strong>
+                Canva dan Figma untuk desain cepat, komponen UI, prototipe, serta kerja kolaboratif dengan tim kreatif.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Experience & Achievements Strip -->
+        <div class="bg-white border-4 border-gray-900 rounded-2xl p-5 shadow-pixel relative z-10 lg:-ml-[calc(50%_+_1rem)] lg:w-[calc(150%_+_1rem)]">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-3 border-gray-900 pb-2.5 mb-4">
+            <h2 class="font-pixel text-xs sm:text-sm text-emerald-700 flex items-center gap-2">
+              <span>&#127942;</span> PENGALAMAN &amp; PENCAPAIAN
+            </h2>
+            <span class="font-mono text-xs bg-emerald-100 border-2 border-gray-900 px-2.5 py-0.5 rounded-full font-bold">Rekam Jejak</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="bg-amber-50 border-2 border-gray-900 rounded-xl p-3">
+              <span class="inline-block bg-yellow-300 border border-gray-900 font-pixel text-[8px] px-2 py-0.5 rounded mb-1.5">TOP 10</span>
+              <h3 class="font-bold text-sm text-gray-900">Kompetisi Kelas Modul</h3>
+              <p class="text-xs text-gray-600 mt-1">Meraih peringkat 10 besar dalam perancangan desain modul &amp; antarmuka kuliner.</p>
+            </div>
+            <div class="bg-sky-50 border-2 border-gray-900 rounded-xl p-3">
+              <span class="inline-block bg-sky-300 border border-gray-900 font-pixel text-[8px] px-2 py-0.5 rounded mb-1.5">PROJECT KLIEN</span>
+              <h3 class="font-bold text-sm text-gray-900">Desain Logo Perusahaan</h3>
+              <p class="text-xs text-gray-600 mt-1">Merancang identitas visual &amp; logo perusahaan swasta yang profesional dan mudah dikenali.</p>
+            </div>
+            <div class="bg-pink-50 border-2 border-gray-900 rounded-xl p-3">
+              <span class="inline-block bg-pink-300 border border-gray-900 font-pixel text-[8px] px-2 py-0.5 rounded mb-1.5">KOMPETISI</span>
+              <h3 class="font-bold text-sm text-gray-900">Seleksi Lomba 3D Character</h3>
+              <p class="text-xs text-gray-600 mt-1">Mengikuti seleksi lomba perancangan karakter 3D (3D Character) menggunakan Blender.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION: FIELD WORK PRACTICE EXPERIENCE (PKL) -->
+     <section id="pkl" class="mt-10 bg-white border-4 border-gray-900 rounded-2xl p-5 sm:p-8 shadow-pixel relative">
+       <div class="flex flex-wrap items-center justify-between gap-2 border-b-3 border-gray-900 pb-2.5 mb-4">
+         <h2 class="font-pixel text-xs sm:text-sm text-blue-700 flex items-center gap-2">
+           <span>&#127981;</span> FIELD WORK PRACTICE EXPERIENCE
+         </h2>
+         <span class="font-mono text-xs bg-blue-100 border-2 border-gray-900 px-2.5 py-0.5 rounded-full font-bold">PKL</span>
+       </div>
+       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+         <!-- Slot 1: isi dengan data PKL Anda -->
+         <div class="bg-amber-50 border-2 border-gray-900 rounded-xl p-4 relative md:col-span-2">
+           <span class="inline-block bg-yellow-300 border border-gray-900 font-pixel text-[8px] px-2 py-0.5 rounded mb-2">PERIODE 1</span>
+           <h3 class="font-bold text-sm text-gray-900">Program Design ITS Tekno Sains Academy</h3>
+           <p class="font-mono text-xs text-gray-600 mt-1">Februari 2026 - April 2026</p>
+           <ul class="text-xs text-gray-700 mt-2 space-y-1.5 leading-relaxed list-none">
+             <li><span class="font-bold text-blue-700">&bull; Desain Grafis dan Branding.</span> Membuat aset visual untuk kebutuhan promosi, materi edukasi, serta identitas visual acara atau media sosial.</li>
+             <li><span class="font-bold text-orange-700">&bull; 3D Modelling dan Animasi.</span> Mempelajari serta mempraktikkan pembuatan aset tiga dimensi, rendering, dan animasi dasar sesuai dengan kurikulum peminatan di PRODES.</li>
+             <li><span class="font-bold text-emerald-700">&bull; Pemasaran Digital (Digital Marketing).</span> Merancang strategi konten media sosial, pengelolaan kampanye digital, hingga penulisan copywriting untuk menjangkau calon peserta pelatihan.</li>
+           </ul>
+           <!-- Dokumentasi PKL (Polaroid) -->
+           <div class="mt-6">
+             <div class="flex items-center gap-2 mb-3">
+               <span class="font-pixel text-[10px] text-gray-900">&#128247; DOKUMENTASI PKL</span>
+               <span class="font-mono text-[10px] text-gray-500">(opsional)</span>
+             </div>
+             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+               <div class="polaroid-card bg-white border-4 border-gray-900 rounded-xl p-2.5 pb-3 shadow-pixelSm relative -rotate-1">
+                 <div class="tape-strip w-20 h-5 mx-auto -mt-6 mb-2"></div>
+                 <div class="rounded-lg overflow-hidden border-3 border-gray-900 bg-gray-900 aspect-[4/3] relative group">
+                   <img src="Prodes-1.jpg" alt="Dokumentasi PKL Prodes 1" class="w-full h-full object-cover block" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
+                   <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-1 text-gray-400 font-mono text-[10px] px-3">
+                     <span class="text-2xl">&#128247;</span>
+                     <span class="font-pixel text-[8px] text-gray-500">FOTO DOKUMENTASI 1</span>
+                     <span>Taruh Prodes-1.jpg di folder yang sama</span>
+                   </div>
+                 </div>
+                 <p class="font-pixel text-[8px] text-gray-600 mt-3 text-center">DOKUMENTASI PKL 01</p>
+               </div>
+               <div class="polaroid-card bg-white border-4 border-gray-900 rounded-xl p-2.5 pb-3 shadow-pixelSm relative rotate-1">
+                 <div class="tape-strip w-20 h-5 mx-auto -mt-6 mb-2"></div>
+                 <div class="rounded-lg overflow-hidden border-3 border-gray-900 bg-gray-900 aspect-[4/3] relative group">
+                   <img src="Prodes-2.jpg" alt="Dokumentasi PKL Prodes 2" class="w-full h-full object-cover block" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
+                   <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-1 text-gray-400 font-mono text-[10px] px-3">
+                     <span class="text-2xl">&#128247;</span>
+                     <span class="font-pixel text-[8px] text-gray-500">FOTO DOKUMENTASI 2</span>
+                     <span>Taruh Prodes-2.jpg di folder yang sama</span>
+                   </div>
+                 </div>
+                 <p class="font-pixel text-[8px] text-gray-600 mt-3 text-center">DOKUMENTASI PKL 02</p>
+               </div>
+             </div>
+           </div>
+           </div>
+         </div>
+         <!-- Slot 2: PKL Periode 2 -->
+         <div class="bg-amber-50 border-2 border-gray-900 rounded-xl p-4 relative">
+           <span class="inline-block bg-yellow-300 border border-gray-900 font-pixel text-[8px] px-2 py-0.5 rounded mb-2">PERIODE 2</span>
+           <h3 class="font-bold text-sm text-gray-900">Faculty Design Creativity &amp; Business Digital</h3>
+           <p class="font-mono text-xs text-gray-600 mt-1">Juli 2026 - Oktober 2026</p>
+           <ul class="text-xs text-gray-700 mt-2 space-y-1.5 leading-relaxed list-none">
+              <li><span class="font-bold text-blue-700">&#8226; Produksi Konten Digital.</span> Membuat desain grafis, infografis, video pendek (reels), dan materi promosi untuk media sosial maupun situs web resmi FDKBD ITS.</li>
+              <li><span class="font-bold text-orange-700">&#8226; Peliputan dan Penulisan Berita.</span> Mendokumentasikan kegiatan fakultas atau universitas, lalu menyusunnya menjadi rilis pers (press release) atau artikel berita untuk kanal seperti ITS News.</li>
+              <li><span class="font-bold text-emerald-700">&#8226; Pengelolaan Identitas Visual.</span> Mempelajari penerapan panduan identitas visual resmi kampus pada berbagai kebutuhan acara dan publikasi.</li>
+           </ul>
+           <div class="mt-6">
+             <div class="flex items-center gap-2 mb-3">
+               <span class="font-pixel text-[10px] text-gray-900">&#128247; DOKUMENTASI PKL</span>
+               <span class="font-mono text-[10px] text-gray-500">(opsional)</span>
+             </div>
+             <div class="grid grid-cols-1 gap-3 max-w-md">
+               <div class="polaroid-card bg-white border-4 border-gray-900 rounded-xl p-2.5 pb-3 shadow-pixelSm relative -rotate-1">
+                <div class="tape-strip w-20 h-5 mx-auto -mt-6 mb-2"></div>
+                 <div class="aspect-[4/3] rounded-lg overflow-hidden border-2 border-gray-900 bg-gray-100 relative">
+                   <img src="DOKUMENTASI-MAGANG.jpeg" alt="Dokumentasi PKL 3" class="w-full h-full object-cover block" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" />
+                   <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-1 text-gray-400 font-mono text-[10px] px-3">
+                     <span class="text-2xl">&#128247;</span>
+                     <span class="font-pixel text-[8px] text-gray-500">FOTO DOKUMENTASI 3</span>
+                     <span>Taruh DOKUMENTASI-MAGANG.jpeg di folder yang sama</span>
+                   </div>
+                 </div>
+                 <p class="font-pixel text-[8px] text-gray-600 mt-3 text-center">DOKUMENTASI PKL 03</p>
+               </div>
+             </div>
+           </div>
+         </div>
+         <!-- Slot 3: placeholder -->
+         <div class="bg-sky-50 border-2 border-dashed border-gray-400 rounded-xl p-4 flex items-center justify-center text-center">
+           <div>
+             <span class="text-3xl">&#128221;</span>
+             <p class="font-pixel text-[9px] text-gray-500 mt-2">SLOT PKL 3</p>
+             <p class="font-mono text-[10px] text-gray-400 mt-1">Tambahkan pengalaman PKL lainnya di sini</p>
+           </div>
+         </div>
+       </div>
+     </section>
+    <!-- SECTION 3: PORTFOLIO GALLERY (POLAROID SCRAPBOOK + FILTER TABS) -->
+    <section id="karya" class="bg-paperCream border-4 border-gray-900 rounded-2xl p-5 sm:p-8 shadow-pixel relative">
+      <!-- Section Header & Filter Controls -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b-4 border-gray-900 pb-5 mb-7">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-blue-600 text-white font-pixel text-[9px] px-3 py-1 rounded-md border-2 border-gray-900 mb-2">
+            <span>&#128444;</span> ARSIP KARYA VISUAL
+          </div>
+          <h2 class="font-pixel text-lg sm:text-2xl text-gray-900">MY PROJECTS</h2>
+          <p class="font-mono text-xs sm:text-sm text-gray-600 mt-1">Klik pada kartu karya untuk melihat detail proses &amp; pratinjau penuh.</p>
+        </div>
+        <!-- Category Filter Tabs -->
+        <div id="filter-buttons" class="flex flex-wrap gap-2">
+          <button data-filter="all" class="filter-btn active pixel-btn bg-yellow-400 text-gray-900 font-mono text-xs font-bold px-3.5 py-2 rounded-xl border-2 border-gray-900 shadow-pixelSm">
+            Semua Karya (15)
+          </button>
+          <button data-filter="3d" class="filter-btn pixel-btn bg-white hover:bg-orange-100 text-gray-900 font-mono text-xs font-bold px-3.5 py-2 rounded-xl border-2 border-gray-900 shadow-pixelSm">
+            Desain 3D (Blender)
+          </button>
+          <button data-filter="grafis" class="filter-btn pixel-btn bg-white hover:bg-sky-100 text-gray-900 font-mono text-xs font-bold px-3.5 py-2 rounded-xl border-2 border-gray-900 shadow-pixelSm">
+            Desain Grafis &amp; UI
+          </button>
+          <button data-filter="lukis" class="filter-btn pixel-btn bg-white hover:bg-emerald-100 text-gray-900 font-mono text-xs font-bold px-3.5 py-2 rounded-xl border-2 border-gray-900 shadow-pixelSm">
+            Seni Lukis &amp; Sketsa
+  </button>
+  <button data-filter="video" class="filter-btn pixel-btn bg-white hover:bg-fuchsia-100 text-gray-900 font-mono text-xs font-bold px-3.5 py-2 rounded-xl border-2 border-gray-900 shadow-pixelSm">
+    Video Graphic
+  </button>
+        </div>
+      </div>
+      <!-- Polaroid Project Grid -->
+      <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+        <!-- Cards injected dynamically via JavaScript for clean state & modal syncing -->
+      </div>
+    </section>
+    <!-- SECTION 4: FOOTER / CONTACT WINDOW -->
+    <footer id="kontak" class="mt-10 bg-gray-900 text-white border-4 border-gray-900 rounded-2xl p-6 sm:p-8 shadow-pixel">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <span class="font-pixel text-[10px] text-yellow-400">TERTARIK BERKOLABORASI?</span>
+          <h2 class="font-pixel text-base sm:text-xl text-white mt-2">HUBUNGI THORIQULL</h2>
+          <p class="font-mono text-xs sm:text-sm text-gray-300 mt-2 max-w-xl">
+            Siap membantu proyek desain grafis, aset 3D Blender, maupun ilustrasi visual untuk kebutuhan kreatif dan komersial Anda.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3 w-full md:w-auto">
+          <a href="https://wa.me/6285732844066" target="_blank" rel="noopener noreferrer" class="pixel-btn flex-1 md:flex-initial justify-center bg-emerald-500 hover:bg-emerald-400 text-gray-900 font-mono text-xs sm:text-sm font-bold px-5 py-3 rounded-xl border-2 border-white inline-flex items-center gap-2">
+            <span>&#128241;</span> WhatsApp
+          </a>
+          <a href="mailto:rizqy3492@gmail.com" class="pixel-btn flex-1 md:flex-initial justify-center bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-mono text-xs sm:text-sm font-bold px-5 py-3 rounded-xl border-2 border-white inline-flex items-center gap-2">
+            <span>&#128231;</span> Kirim Email
+          </a>
+          <!-- Interactive CV Download Box -->
+          <a id="cv-download-btn" href="CV-M-Thoriqull%20Rizqy-1.pdf" download="CV-M-Thoriqull Rizqy.pdf" onclick="notifyCvDownload()" aria-label="Unduh CV Muhammad Thoriqull Rizqy dalam format PDF" class="cv-download-box w-full md:w-auto justify-center bg-sky-400 hover:bg-sky-300 text-gray-900 font-mono px-4 py-2.5 rounded-xl border-2 border-white inline-flex items-center gap-3">
+            <svg viewBox="0 0 24 24" class="cv-download-icon w-6 h-6 sm:w-7 sm:h-7 shrink-0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3.5v10.5" />
+              <path d="M7.5 10.5 12 15l4.5-4.5" />
+              <path d="M4 18.5v.5A2 2 0 0 0 6 21h12a2 2 0 0 0 2-2v-.5" />
+            </svg>
+            <span class="flex flex-col items-start leading-tight text-left">
+              <span class="font-pixel text-[9px] sm:text-[10px]">DOWNLOAD CV</span>
+              <span class="text-[10px] font-bold opacity-80 mt-1 tracking-tight">PDF &#8226; 86 KB</span>
+            </span>
+            <span class="font-pixel text-[8px] bg-gray-900 text-sky-300 px-1.5 py-1 rounded border border-sky-200" aria-hidden="true">FILE</span>
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-6 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-xs text-gray-400">
+        <p>&#169; 2026 Muhammad Thoriqull Rizqy &#8212; Sukolilo, Surabaya.</p>
+        <p>Dibuat dengan estetika Retro OS &amp; Creative Scrapbook.</p>
+      </div>
+    </footer>
+  </main>
+  <!-- INTERACTIVE RETRO OS LIGHTBOX MODAL -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-gray-900/75 backdrop-blur-xs">
+    <div class="bg-white border-4 border-gray-900 rounded-2xl shadow-pixelLg w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden animate-[fadeIn_0.2s_ease-out]">
+      <!-- Modal OS Titlebar -->
+      <div class="bg-blue-700 border-b-4 border-gray-900 px-4 py-3 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="w-3.5 h-3.5 rounded-full bg-red-400 border-2 border-gray-900"></span>
+          <span class="w-3.5 h-3.5 rounded-full bg-yellow-300 border-2 border-gray-900"></span>
+          <span class="w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-gray-900"></span>
+          <span id="modal-window-title" class="font-pixel text-[10px] sm:text-xs text-white ml-2 truncate">PREVIEW_KARYA.EXE</span>
+        </div>
+        <button onclick="closeModal()" aria-label="Tutup Jendela" class="bg-red-500 hover:bg-red-600 text-white font-pixel text-xs w-8 h-8 rounded-lg border-2 border-gray-900 flex items-center justify-center shadow-pixelSm">
+          X
+        </button>
+      </div>
+      <!-- Modal Scrollable Content -->
+      <div class="p-5 sm:p-7 overflow-y-auto grid-paper space-y-5">
+        <!-- Large Artwork Showcase -->
+        <div id="modal-artwork" class="w-full rounded-xl border-4 border-gray-900 bg-gray-900 overflow-hidden shadow-pixel">
+          <!-- Procedural SVG illustration injected here -->
+        </div>
+        <!-- Project Metadata -->
+        <div class="bg-white border-3 border-gray-900 rounded-xl p-5 shadow-pixelSm">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <span id="modal-category-badge" class="font-pixel text-[9px] px-3 py-1 rounded-md border-2 border-gray-900 bg-yellow-300 text-gray-900">KATEGORI</span>
+            <span id="modal-tools" class="font-mono text-xs font-bold text-blue-700">Tools: Blender</span>
+          </div>
+          <h3 id="modal-title" class="font-bold text-xl sm:text-2xl text-gray-900">Judul Karya</h3>
+          <p id="modal-description" class="text-gray-700 text-sm sm:text-base leading-relaxed mt-3">Deskripsi karya.</p>
+          <div class="mt-4 pt-4 border-t-2 border-dashed border-gray-300">
+            <h4 class="font-pixel text-[10px] text-gray-900 mb-2">PROSES &amp; DETAIL TEKNIS:</h4>
+            <p id="modal-process" class="font-mono text-xs text-gray-700 leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- RETRO TOAST NOTIFICATION -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-yellow-300 border-4 border-gray-900 rounded-xl px-4 py-3 shadow-pixel flex items-center gap-3">
+      <span class="text-xl">&#169;</span>
+      <div>
+        <p id="toast-title" class="font-pixel text-[10px] text-gray-900">BERHASIL DISALIN!</p>
+        <p id="toast-message" class="font-mono text-xs text-gray-800 font-bold mt-0.5">Teks disalin ke clipboard.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Portfolio Data strictly sourced from Muhammad Thoriqull Rizqy's CV & Portfolio
+    const projectsData = [
+      {
+        id: '3d-characters',
+        category: '3d',
+        categoryLabel: 'Desain 3D (Blender)',
+        badgeColor: 'bg-orange-300',
+        rotation: '-rotate-1',
+        title: 'Karakter 3D Serial Populer & Fantasi',
+        shortDesc: 'Permodelan karakter 3D lengkap (tampak depan, samping, belakang) dengan proporsi dan shading di Blender.',
+        fullDesc: 'Eksplorasi permodelan karakter 3D bergaya stylized yang terinspirasi dari karakter ikonik serial populer serta karakter fantasi orisinal. Fokus utama proyek ini adalah ketepatan anatomi stylized, proporsi tiga dimensi, dan pencahayaan studio.',
+        process: 'Dibuat menggunakan Blender mulai dari tahap blocking bentuk dasar (primitive mesh), sculpting/modeling detail rambut serta kostum, pemberian material shader, hingga rendering orthographic turnaround (tampak samping, depan, dan belakang).',
+        tools: 'Blender 3D &#8226; Cycles/Eevee Render',
+        svgArtwork: `
+            <div class="grid grid-cols-2 grid-rows-2 gap-0.5 w-full h-full bg-gray-900">
+              <img src="3D-Character-Doraemon.png" alt="Render 3D karakter Doraemon" class="w-full h-full object-cover block" />
+              <img src="3D-Character-Nobita.png" alt="Render 3D karakter Nobita" class="w-full h-full object-cover block" />
+              <img src="3D-Character-Frisk.png" alt="Render 3D karakter Frisk" class="w-full h-full object-cover block" />
+              <img src="3D-Character-Seleksi.png" alt="Render seleksi lomba 3D character" class="w-full h-full object-cover block" />
+            </div>
+          `
+      },
+      {
+        id: '3d-food-cart',
+        category: '3d',
+        categoryLabel: 'Desain 3D (Blender)',
+        badgeColor: 'bg-orange-300',
+        rotation: 'rotate-1',
+        title: 'Gerobak Kuliner & Furnitur 3D',
+        shortDesc: 'Visualisasi aset 3D gerobak makanan tradisional lengkap dengan detail properti, pencahayaan, dan material.',
+        fullDesc: 'Permodelan lingkungan dan properti 3D berupa gerobak kuliner kaki lima lengkap dengan tirai kain merah (noren), lampion gantung, tumpukan piring, gelas, bangku kayu, dan roda gerobak berjari-jari detail.',
+        process: 'Pemodelan hard-surface di Blender dengan memperhatikan skala antar objek, penambahan bevel pada sudut kayu dan logam, penataan pencahayaan hangat untuk menonjolkan suasana kuliner malam, serta komposisi kamera isometrik dan tampak depan.',
+        tools: 'Blender 3D &#8226; Hard-Surface Modeling',
+        svgArtwork: `
+            <div class="w-full h-full bg-gray-900">
+              <img src="3D-Gerobak-Ramen.png" alt="Render 3D gerobak ramen khas Indonesia - Blender" class="w-full h-full object-cover block" />
+            </div>
+          `
+      },
+      {
+        id: '3d-interior-ruang',
+        category: '3d',
+        categoryLabel: 'Desain 3D (Blender)',
+        badgeColor: 'bg-orange-300',
+        rotation: 'rotate-1',
+        title: 'Interior & Ruang 3D',
+        shortDesc: 'Visualisasi ruang interior 3D lengkap dengan penataan furnitur, material, dan pencahayaan.',
+        fullDesc: 'Proyek permodelan interior 3D yang menata elemen ruang seperti dinding, lantai, furnitur, dan properti dekoratif menjadi satu komposisi yang realistis serta proporsional.',
+        process: 'Pemodelan modular di Blender, pemberian material pada lantai dan furnitur, penataan pencahayaan area (area light), serta pengaturan kamera interior agar sudut ruang terasa lapang.',
+        tools: 'Blender 3D \u2022 Interior & Lighting',
+        svgArtwork: `
+            <div class="w-full h-full bg-gray-900">
+              <img src="3D-Ruang-Rumah.png" alt="Render 3D interior ruang rumah - Blender" class="w-full h-full object-cover block" />
+            </div>
+          `
+      },
+      {
+        id: '3d-tangan-anatomi',
+        category: '3d',
+        categoryLabel: 'Desain 3D (Blender)',
+        badgeColor: 'bg-orange-300',
+        rotation: '-rotate-1',
+        title: 'Studi Anatomi Tangan 3D',
+        shortDesc: 'Latihan sculpting anatomi tangan manusia di Blender: proporsi, lipatan kulit, dan detail jari.',
+        fullDesc: 'Studi bentuk organik berupa tangan manusia yang dimodelkan tiga dimensi. Fokus pada proporsi tulang, ketebalan jari, lipatan sendi, serta permukaan kulit yang halus.',
+        process: 'Dimulai dari base mesh sederhana, dilanjutkan sculpting detail anatomis, pemberian material kulit, lalu render dengan pencahayaan studio untuk menonjolkan bentuk.',
+        tools: 'Blender 3D \u2022 Sculpting & Anatomy',
+        svgArtwork: `
+            <div class="w-full h-full bg-gray-900">
+              <img src="3D-Tangan-Blender.png" alt="Render 3D anatomi tangan - Blender" class="w-full h-full object-cover block" />
+            </div>
+          `
+      },
+      {
+        id: 'ui-nusantara-coffee',
+        category: 'grafis',
+        categoryLabel: 'Desain Grafis & UI',
+        badgeColor: 'bg-sky-300',
+        rotation: '-rotate-1',
+        title: 'Aplikasi & Modul "Nusantara Coffee"',
+        shortDesc: 'Perancangan konsep sketsa wireframe hingga tampilan UI aplikasi pemesanan minuman (Module 3).',
+        fullDesc: 'Proyek Tugas Akhir Modul 3 berupa perancangan identitas visual, ikon aplikasi ukuran 5x5 cm, serta antarmuka pengguna (UI) aplikasi mobile "Nusantara Coffee" yang mengangkat cita rasa minuman lokal modern seperti Hot Java Boba.',
+        process: 'Dimulai dari sketsa kasar wireframe di buku tulis (tampilan login, home, keranjang, dan detail produk), dilanjutkan digitalisasi layout menggunakan Adobe Illustrator dengan palet warna hangat bernuansa kopi karamel dan tipografi yang jelas.',
+        tools: 'Adobe Illustrator &#8226; Wireframing &#8226; UI Design',
+        svgArtwork: `
+            <div class="grid grid-cols-2 gap-0.5 w-full h-full bg-white">
+              <img src="MODUL-3-04.jpg" alt="Modul 3 - tampilan UI aplikasi Nusantara Coffee (04)" class="w-full h-full object-contain block" />
+              <img src="MODUL-3-05.jpg" alt="Modul 3 - tampilan UI aplikasi Nusantara Coffee (05)" class="w-full h-full object-contain block" />
+            </div>
+          `
+      },
+      {
+        id: 'grafis-kwitansi',
+        category: 'grafis',
+        categoryLabel: 'Desain Grafis',
+        badgeColor: 'bg-sky-300',
+        rotation: 'rotate-1',
+        title: 'Desain Logo Perusahaan',
+        shortDesc: 'Perancangan identitas visual & logo perusahaan (Harvest Tiga Perkasa) yang profesional dan mudah dikenali.',
+        fullDesc: 'Proyek nyata pembuatan desain logo & identitas visual untuk perusahaan swasta Harvest Tiga Perkasa. Mengutamakan kesan profesional, keterbacaan, dan konsistensi elemen brand pada berbagai media.',
+        process: 'Eksplorasi konsep logo, penyusunan grid tata letak, pemberian warna brand, hingga finalisasi format cetak & digital menggunakan Adobe Illustrator.',
+        tools: 'Adobe Illustrator &#8226; Print & Layout Design',
+        svgArtwork: `
+            <div class="w-full h-full bg-white">
+              <img src="Harvest-Tiga-Perkasa.jpg" alt="Desain logo Harvest Tiga Perkasa" class="w-full h-full object-contain block" />
+            </div>
+          `
+      },
+      {
+        id: 'lukis-stilasi-elang',
+        category: 'lukis',
+        categoryLabel: 'Seni Lukis & Sketsa',
+        badgeColor: 'bg-emerald-300',
+        rotation: '-rotate-1',
+        title: 'Seni Nirmana Titik',
+        shortDesc: 'Karya eksplorasi komposisi nirmana titik dan pola dekoratif hitam-putih menggunakan tinta.',
+        fullDesc: 'Karya seni rupa dwimatra yang menggayakan bentuk anatomi burung elang yang bertengger dengan isian motif ornamen geometris, sulur tumbuhan, dan garis ritmis kontras tinggi (hitam di atas kertas putih).',
+        process: 'Pembuatan sketsa proporsi burung elang dengan pensil, dilanjutkan teknik penintaan (inking) menggunakan drawing pen dengan variasi ketebalan garis dan blok hitam-putih untuk menciptakan kedalaman dekoratif.',
+        tools: 'Drawing Pen &#8226; Tinta Hitam &#8226; Kertas Gambar',
+        svgArtwork: `
+            <div class="w-full h-full bg-white">
+              <img src="Group-1-0.jpeg" alt="Stilasi ornamen burung elang - karya tinta" class="w-full h-full object-contain block" />
+            </div>
+          `
+      },
+      {
+        id: 'grafis-baju-kemerdekaan',
+        category: 'grafis',
+        categoryLabel: 'Desain Grafis',
+        badgeColor: 'bg-sky-300',
+        rotation: 'rotate-1',
+        title: 'Desain Baju Kemerdekaan',
+        shortDesc: 'Perancangan desain baju kemerdekaan (sisi depan & belakang) dengan identitas visual yang konsisten.',
+        fullDesc: 'Proyek perancangan desain baju kemerdekaan yang mencakup tampilan sisi depan dan belakang, dengan konsistensi elemen visual, warna, dan tipografi pada kedua sisi.',
+        process: 'Penyusunan konsep desain, penempatan elemen visual pada sisi depan dan belakang, penyesuaian proporsi, hingga finalisasi format cetak menggunakan Adobe Illustrator.',
+        tools: 'Adobe Illustrator &#8226; Apparel Design',
+        svgArtwork: `
+            <div class="grid grid-cols-2 gap-0.5 w-full h-full bg-white">
+              <div class="relative w-full h-full">
+                <img src="Sablon-1.jpeg" alt="Desain sablon baju - sisi depan" class="w-full h-full object-contain block" />
+                <span class="absolute bottom-1 left-1 bg-gray-900/80 text-white font-pixel text-[7px] px-1.5 py-0.5 rounded">DEPAN</span>
+              </div>
+              <div class="relative w-full h-full">
+                <img src="Sablon-2.jpeg" alt="Desain sablon baju - sisi belakang" class="w-full h-full object-contain block" />
+                <span class="absolute bottom-1 left-1 bg-gray-900/80 text-white font-pixel text-[7px] px-1.5 py-0.5 rounded">BELAKANG</span>
+              </div>
+            </div>
+          `
+      },      {
+        id: 'grafis-video-motion',
+        category: 'video',
+        categoryLabel: 'Video Graphic & Motion',
+        badgeColor: 'bg-fuchsia-300',
+        rotation: '-rotate-1',
+        title: 'Video Graphic & Motion Graphic',
+        shortDesc: 'Motion graphic logo AE Saber - animasi logo dan visual bergerak untuk identitas brand.',
+        fullDesc: 'Proyek motion graphic logo AE Saber yang mengeksplorasi animasi logo, transisi, dan visual bergerak untuk identitas brand. Video dapat diputar langsung di browser (MP4).',
+        process: 'Perencanaan storyboard, pembuatan aset visual, animasi frame-by-frame / motion, hingga rendering video MP4.',
+        tools: 'After Effects &#8226; Premiere Pro &#8226; CapCut',
+        svgArtwork: `
+            <div class="w-full h-full bg-black">
+              <video class="w-full h-full object-cover block" controls preload="metadata" playsinline>
+                <source src="Logo-AE-SABER.mp4" type="video/mp4" />
+              </video>
+            </div>
+          `
+      },      {
+        id: 'grafis-video-optical-flare',
+        category: 'video',
+        categoryLabel: 'Video Graphic & Optical Flare',
+        badgeColor: 'bg-fuchsia-300',
+        rotation: 'rotate-1',
+        title: 'Video Graphic & Optical Flare',
+        shortDesc: 'Eksperimen visual optical flare - efek cahaya dan kilau dinamis dalam motion graphic.',
+        fullDesc: 'Proyek video graphic yang mengeksplorasi efek optical flare, kilau cahaya, dan transisi visual dinamis untuk memperkaya tampilan motion graphic. Video dapat diputar langsung di browser (MP4).',
+        process: 'Penyusunan konsep visual, pembuatan efek flare dan partikel cahaya, animasi transisi, hingga rendering video MP4.',
+        tools: 'After Effects &#8226; Premiere Pro &#8226; CapCut',
+        svgArtwork: `
+            <div class="w-full h-full bg-black">
+              <video class="w-full h-full object-cover block" controls preload="metadata" playsinline>
+                <source src="Video-opticalflare.mp4" type="video/mp4" />
+              </video>
+            </div>
+          `
+      },      {
+        id: 'lukis-stilasi-burung-elang',
+        category: 'lukis',
+        categoryLabel: 'Seni Lukis & Sketsa',
+        badgeColor: 'bg-emerald-300',
+        rotation: 'rotate-1',
+        title: 'Stilasi Burung Elang',
+        shortDesc: 'Karya eksplorasi stilasi fauna dan flora dengan detail pola dekoratif hitam-putih menggunakan tinta.',
+        fullDesc: 'Karya seni rupa dwimatra yang menggayakan bentuk anatomi burung elang yang bertengger dengan isian motif ornamen geometris, sulur tumbuhan, dan garis ritmis kontras tinggi (hitam di atas kertas putih).',
+        process: 'Pembuatan sketsa proporsi burung elang dengan pensil, dilanjutkan teknik penintaan (inking) menggunakan drawing pen dengan variasi ketebalan garis dan blok hitam-putih untuk menciptakan kedalaman dekoratif.',
+        tools: 'Drawing Pen &#8226; Tinta Hitam &#8226; Kertas Gambar',
+        svgArtwork: `
+            <div class="w-full h-full bg-white">
+              <img src="Group-1-2.jpeg" alt="Stilasi ornamen burung elang - karya tinta" class="w-full h-full object-contain block" />
+            </div>
+          `
+      },      {
+        id: 'lukis-metode-arsir',
+        category: 'lukis',
+        categoryLabel: 'Seni Lukis & Sketsa',
+        badgeColor: 'bg-emerald-300',
+        rotation: '-rotate-1',
+        title: 'Gambar Metode Arsir',
+        shortDesc: 'Latihan teknik arsir (hatching, cross-hatching, stippling) untuk menciptakan gradasi dan volume pada karya seni rupa.',
+        fullDesc: 'Kumpulan studi latihan metode arsir yang mengeksplorasi gradasi nilai (value), arah datang cahaya, bayangan jatuh (cast shadow), serta tekstur permukaan benda menggunakan pensil grafit dan tinta.',
+        process: 'Pembuatan sketsa proporsi benda, lalu penerapan teknik arsir bertahap (hatching, cross-hatching, contour hatching, scumbling, pointilis) untuk membentuk volume dan kedalaman.',
+        tools: 'Pensil Grafit &#8226; Tinta &#8226; Studi Arsir',
+        svgArtwork: `
+            <div class="w-full h-full bg-white">
+              <img src="Group-2-0.jpeg" alt="Gambar metode arsir - studi pensil dan tinta" class="w-full h-full object-contain block" />
+            </div>
+          `
+      },      {
+        id: 'lukis-arsir-bayangan-bola',
+        category: 'lukis',
+        categoryLabel: 'Seni Lukis & Sketsa',
+        badgeColor: 'bg-emerald-300',
+        rotation: '-rotate-1',
+        title: 'Arsir Bayangan Bola',
+        shortDesc: 'Studi arsir bayangan bola (cast shadow) dan gradasi nilai menggunakan pensil grafit.',
+        fullDesc: 'Latihan menggambar bola dengan penekanan pada arah datang cahaya, bayangan jatuh (cast shadow), gradasi nilai (value), serta tekstur permukaan untuk menciptakan ilusi volume tiga dimensi.',
+        process: 'Pembuatan sketsa bentuk dasar bola, lalu penerapan teknik arsir bertahap (hatching, cross-hatching, scumbling) untuk membentuk gradasi terang-gelap dan bayangan jatuh.',
+        tools: 'Pensil Grafit &#8226; Studi Arsir & Bayangan',
+        svgArtwork: `
+            <div class="w-full h-full bg-white">
+              <img src="Group-2-2.jpeg" alt="Arsir bayangan bola - studi pensil grafit" class="w-full h-full object-contain block" />
+            </div>
+          `
+      },      {
+        id: 'lukis-point-of-interest',
+        category: 'lukis',
+        categoryLabel: 'Seni Lukis & Sketsa',
+        badgeColor: 'bg-emerald-300',
+        rotation: '-rotate-1',
+        title: 'Point of Interest',
+        shortDesc: 'Studi komposisi point of interest (POI) dan penentuan titik fokus dalam karya seni rupa.',
+        fullDesc: 'Latihan menentukan titik fokus (point of interest) dalam komposisi gambar, mengatur alur pandang mata, serta memanfaatkan kontras, ukuran, dan penempatan objek agar karya terasa seimbang dan menarik.',
+        process: 'Penyusunan sketsa komposisi, penentuan titik fokus utama, lalu penerapan arsir dan detail pada area POI sementara area sekitar disederhanakan untuk mengarahkan perhatian penonton.',
+        tools: 'Pensil Grafit &#8226; Komposisi & POI',
+        svgArtwork: `
+            <div class="w-full h-full bg-white">
+              <img src="Group-2-1.jpeg" alt="Point of interest - studi komposisi seni rupa" class="w-full h-full object-contain block" />
+            </div>
+          `
+      },      {
+        id: 'lukis-nirmana-arsir',
+        category: 'lukis',
+        categoryLabel: 'Seni Lukis & Sketsa',
+        badgeColor: 'bg-emerald-300',
+        rotation: 'rotate-1',
+        title: 'Seni Nirmana Garis',
+        shortDesc: 'Studi komposisi nirmana garis dan gradasi arsir (hatching, cross-hatching, stippling) dalam karya seni rupa.',
+        fullDesc: 'Kumpulan studi dasar seni rupa yang mencakup komposisi Nirmana Titik (pointillism), latihan gradasi lima teknik arsir (Hatching, Cross-Hatching, Contour Hatching, Scumbling, Pointilis), serta gambar bentuk still life benda tiga dimensi.',
+        process: 'Latihan kontrol tekanan tangan menggunakan pensil grafit (2B&#8212;6B) dan tinta untuk menciptakan ilusi volume, arah datang cahaya, bayangan jatuh (cast shadow), serta tekstur permukaan benda.',
+        tools: 'Pensil Grafit &#8226; Tinta &#8226; Studi Nirmana & Arsir',
+        svgArtwork: `
+            <div class="w-full h-full bg-white">
+              <img src="Group-1-1.jpeg" alt="Seni nirmana garis - karya tinta" class="w-full h-full object-contain block" />
+            </div>
+          `
+      }
+    ];
+    const gridContainer = document.getElementById('projects-grid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    // Render Polaroid Cards
+    function renderProjects(filter = 'all') {
+      gridContainer.innerHTML = '';
+      const filtered = filter === 'all' 
+        ? projectsData 
+        : projectsData.filter(item => item.category === filter);
+      filtered.forEach(project => {
+        const card = document.createElement('article');
+        card.className = `polaroid-card cursor-pointer bg-white border-4 border-gray-900 rounded-xl p-3.5 pb-5 shadow-polaroid flex flex-col justify-between relative ${project.rotation}`;
+        card.onclick = () => openModal(project);
+        card.innerHTML = `
+          <div>
+            <!-- Top Tape Accent -->
+            <div class="tape-strip w-20 h-5 mx-auto -mt-6 mb-2"></div>
+            <!-- Artwork Frame -->
+            <div class="rounded-lg overflow-hidden border-3 border-gray-900 bg-gray-900 aspect-[16/10] relative group">
+              ${project.svgArtwork}
+              <div class="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/35 transition flex items-center justify-center">
+                <span class="opacity-0 group-hover:opacity-100 transition bg-yellow-300 text-gray-900 font-pixel text-[9px] px-3 py-2 rounded-lg border-2 border-gray-900 shadow-pixelSm">
+                  &#128269; LIHAT DETAIL
+                </span>
+              </div>
+            </div>
+            <!-- Category Pill -->
+            <div class="mt-3 flex items-center justify-between gap-2">
+              <span class="${project.badgeColor} border-2 border-gray-900 font-mono text-[11px] font-bold px-2.5 py-0.5 rounded-md text-gray-900">
+                ${project.categoryLabel}
+              </span>
+              <span class="font-pixel text-[8px] text-gray-400">#DKV</span>
+            </div>
+            <!-- Title & Description -->
+            <h3 class="font-bold text-base sm:text-lg text-gray-900 mt-2 leading-snug">
+              ${project.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-600 mt-1.5 line-clamp-2">
+              ${project.shortDesc}
+            </p>
+          </div>
+          <div class="mt-4 pt-2.5 border-t-2 border-dashed border-gray-300 flex items-center justify-between font-mono text-[11px] text-gray-700 font-bold">
+            <span class="truncate">${project.tools.split('&#8226;')[0]}</span>
+            <span class="text-blue-700">Buka &#8599;</span>
+          </div>
+        `;
+        gridContainer.appendChild(card);
+      });
+    }
+    // Filter Tab Logic
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('active', 'bg-yellow-400');
+          b.classList.add('bg-white');
+        });
+        btn.classList.add('active', 'bg-yellow-400');
+        btn.classList.remove('bg-white');
+        renderProjects(btn.dataset.filter);
+      });
+    });
+    // Modal Controls
+    const modal = document.getElementById('project-modal');
+    function openModal(project) {
+      document.getElementById('modal-window-title').textContent = `${project.id.toUpperCase()}.EXE`;
+      document.getElementById('modal-artwork').innerHTML = project.svgArtwork;
+      const badge = document.getElementById('modal-category-badge');
+      badge.textContent = project.categoryLabel;
+      badge.className = `font-pixel text-[9px] px-3 py-1 rounded-md border-2 border-gray-900 text-gray-900 ${project.badgeColor}`;
+      document.getElementById('modal-tools').textContent = project.tools;
+      document.getElementById('modal-title').textContent = project.title;
+      document.getElementById('modal-description').textContent = project.fullDesc;
+      document.getElementById('modal-process').textContent = project.process;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    // Close Modal on Backdrop Click or ESC Key
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+    // Copy to Clipboard with Retro Toast Notification (using execCommand fallback for iframe safety)
+    let toastTimeout;
+    function copyText(text, label) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(`${label}: ${text}`);
+      } catch (err) {
+        showToast(`Disalin: ${text}`);
+      }
+      document.body.removeChild(textarea);
+    }
+    function showToast(msg, title = 'BERHASIL DISALIN!') {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-message').textContent = msg;
+      document.getElementById('toast-title').textContent = title;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3000);
+    }
+    // Interactive CV Download Feedback
+    function notifyCvDownload() {
+      const btn = document.getElementById('cv-download-btn');
+      if (btn) {
+        btn.classList.add('cv-download-active');
+        setTimeout(() => btn.classList.remove('cv-download-active'), 1400);
+      }
+      showToast('CV-M-Thoriqull Rizqy.pdf sedang diunduh - cek folder Downloads.', 'UNDUHAN DIMULAI!');
+    }
+    // Flip ID Card to reveal Instagram QR
+    function flipIdCard() {
+      const card = document.getElementById('id-card-flip');
+      if (card) card.classList.toggle('is-flipped');
+    }
+    // Real-time WIB (UTC+7) Clock for Availability Sticker
+    function updateWibClock() {
+      const el = document.getElementById('wib-clock');
+      if (!el) return;
+      const now = new Date();
+      const wib = new Date(now.getTime() + (7 * 60 * 60 * 1000));
+      el.textContent = wib.toISOString().substring(11, 19);
+    }
+    updateWibClock();
+    setInterval(updateWibClock, 1000);
+    // Initialize Portfolio Grid
+    renderProjects('all');
+  </script>
+         <!-- Certificate Download Button -->
+         <div class="mt-8 text-center">
+           <a href="sertifikat-torik-bener-1.png" download class="pixel-btn bg-green-500 hover:bg-green-600 text-white font-pixel text-[10px] sm:text-xs px-6 py-3 rounded-xl border-3 border-gray-900 transition-colors shadow-pixel">
+             <span class="inline-block animate-bounce">&#128247;</span> DOWNLOAD SERTIFIKAT PRODES
+           </a>
+         </div>
+
+
+         <!-- Certificate Download Button -->
+         <div class="mt-8 text-center">
+           <a href="sertifikat-magang-Thoriq-1-F.png" download class="pixel-btn bg-green-500 hover:bg-green-600 text-white font-pixel text-[10px] sm:text-xs px-6 py-3 rounded-xl border-3 border-gray-900 transition-colors shadow-pixel">
+             <span class="inline-block animate-bounce">&#128247;</span> DOWNLOAD SERTIFIKAT FDKBD
+           </a>
+         </div>
+
+</body>
+</html>
